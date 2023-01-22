@@ -7,9 +7,13 @@ const Connection=require("./Config/db")
 app.use(express.json());
 app.use(cors());
 
+var logRouter=require("./routes/usersRoute");
+
 app.get("/", (req,res)=>{
     res.send("Welcome to homepage");
 });
+
+app.use("/api/users/",logRouter);
 
 app.listen(8080,async()=>{
     try{
