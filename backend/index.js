@@ -8,12 +8,14 @@ app.use(express.json());
 app.use(cors());
 
 var logRouter=require("./routes/usersRoute");
+const transactionsRouter = require('./routes/transactionsRoute')
 
 app.get("/", (req,res)=>{
     res.send("Welcome to homepage");
 });
 
-app.use("/api/users/",logRouter);
+app.use("/api/users",logRouter);
+app.use('/api/transactions' , transactionsRouter)
 
 app.listen(8080,async()=>{
     try{
